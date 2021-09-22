@@ -1,36 +1,34 @@
-import stack.Stack;
 import java.util.Scanner;
+import java.util.Stack;
 
-class Main{
-    public static void manualStack(Scanner sc){
-        Stack s = new Stack();
+public class Main1 {
+    public static void utilStack(Scanner sc){
         String option;
+        Stack<Integer> st = new Stack<Integer>();
         while(true){
             System.out.println("Choose one option.");
-            System.out.println("1. Push\n2. Pop\n3. Peek\n4. isEmpty\n5. isFull\n6. List\n7. Exit");
+            System.out.println("1. Push\n2. Pop\n3. Peek\n4. isEmpty\n5. List\n6. Exit");
             option = sc.next();
             switch(option){
                 case "1" :
                     System.out.println("Enter the element to be pushed");
                     int element = sc.nextInt();
-                    s.push(element);
+                    st.push(element);
+                    System.out.println("Successfully pushed");
                     break;
                 case "2" :
-                    System.out.println("Popped out : "+s.pop());
+                    System.out.println("Popped out : "+(Integer)st.pop());
                 break;
                 case "3" :
-                    System.out.println("Take a peek : "+s.peek());
+                    System.out.println("Take a peek : "+(Integer)st.peek());
                     break;
                 case "4" :
-                    System.out.println("Is it famished? : "+s.isEmpty());
+                    System.out.println("Is it famished? : "+st.empty());
                     break;
                 case "5" :
-                    System.out.println("Is it full? : "+s.isFull());
+                    System.out.println(st);
                     break;
                 case "6" :
-                    s.list();
-                    break;
-                case "7" :
                 System.exit(0);
                 break;
 
@@ -41,6 +39,6 @@ class Main{
     }
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
-        manualStack(sc);
+        utilStack(sc);
     }
 }
