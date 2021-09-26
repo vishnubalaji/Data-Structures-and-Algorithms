@@ -2,52 +2,18 @@ import java.util.Stack;
 import java.util.HashMap;
 public class NextGreaterElementII {
     public static void main(String[] args) {
-        int[] nums = {1,2,1};
-        Stack<Integer> st = new Stack<Integer>();
-        int next=0, element, length = nums.length, index = 1;
-        
-        int [] arr = new int[length];
-        HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
-        
-        st.push(nums[0]);
-        for(;index<length;index++){
-            next = nums[index];
-            if(!st.isEmpty()){
-                element = st.pop();
-                while(element<next){
-                    hm.put(nums[index],next);
-                    if(st.isEmpty()){
-                        break;
-                    }
-                    element = st.pop();
-                }
-                if(element>next){
-                    st.push(element);
-                }
+        int [] nums = {1,2,1};
+        int[] res = new int[nums.length];
+        Stack<Integer> stack = new Stack<>();
+        int i = 2*nums.length-1;
+        for(;i>=0;--i){
+            while(!stack.empty() && nums[stack.peek()] <= nums[i%nums.length]){
+                stack.pop();
             }
-            st.push(next);
+            res[i%nums.length] = stack.empty() ? -1 : nums[stack.peek()];
+            stack.push(i % nums.length);
         }
-        
-        while(!st.isEmpty()){
-            hm.put(st.pop(),-1);
-        }
-
-        st.clear();
-        element = nums[length-1];
-        boolean status =true;
-        for(index=0;index<length-1;index++){
-            arr[index] = hm.get(nums[index]);
-            if(element<nums[index] && status){
-                arr[length-1] = nums[index];
-                status = false;
-            }
-        }
-        if(status==true){
-            arr[length-1] = -1;
-        }
-        System.out.println(hm);
-        for(int i:arr){
+        for(int i:res){
             System.out.println(i);
         }
-    }
 }
