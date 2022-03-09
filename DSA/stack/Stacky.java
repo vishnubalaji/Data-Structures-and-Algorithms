@@ -1,6 +1,6 @@
 package stack;
 
-public class Stack{
+public class Stacky{
     // Operations in stack are
     // 1. push
     // 2. pop
@@ -10,7 +10,7 @@ public class Stack{
     public int top;
     int array[] = new  int[MAX];
 
-    public Stack(){
+    public Stacky(){
         top = -1;
     }
 
