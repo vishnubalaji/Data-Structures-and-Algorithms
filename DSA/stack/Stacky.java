@@ -1,4 +1,4 @@
-package stack;
+import java.util.Scanner;
 
 public class Stacky{
     // Operations in stack are
@@ -6,9 +6,10 @@ public class Stacky{
     // 2. pop
     // 3. peek
     // 4. isEmpty
+    // 5. isFull
     static final int MAX = 5;
-    public int top;
-    int array[] = new  int[MAX];
+    public static int top;
+    static int array[] = new int[MAX];
 
     public Stacky(){
         top = -1;
@@ -70,6 +71,43 @@ public class Stacky{
             int i=0;
             for(;i<=top;i++){
                 System.out.println(array[i]);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Stacky s = new Stacky();
+        Scanner sc = new Scanner(System.in);
+        String option;
+        while(true){
+            System.out.println("1. Push\n2. Pop\n3. Peek\n4. isEmpty\n5. isFull\n6. List\n7. Exit");
+            option = sc.next();
+            switch(option){
+                case "1" :
+                    System.out.println("Enter the element to be pushed");
+                    int element = sc.nextInt();
+                    s.push(element);
+                    break;
+                case "2" :
+                    System.out.println("Popped out : "+s.pop());
+                break;
+                case "3" :
+                    System.out.println("Take a peek : "+s.peek());
+                    break;
+                case "4" :
+                    System.out.println("Is it famished? : "+s.isEmpty());
+                    break;
+                case "5" :
+                    System.out.println("Is it full? : "+s.isFull());
+                    break;
+                case "6" :
+                    s.list();
+                    break;
+                case "7" :
+                    System.exit(0);
+                break;
+
+                default:
+                System.out.println("That ain't an option buddy");
             }
         }
     }
